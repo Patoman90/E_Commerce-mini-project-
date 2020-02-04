@@ -12,7 +12,7 @@
         <h3>{{ product.name }}</h3>
         <p class="product-description">{{ product.description }}</p>
         <p>{{ product.price }}</p>
-        <form method="POST" action="{% url 'add_to_cart' product_id %}">
+        <form method="POST" action="{% url 'add_to_cart' product.id %}">
               {% csrf_token %}
               <div class="input-group">
                  <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Insert quantity">
