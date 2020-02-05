@@ -24,6 +24,7 @@ def add_to_cart(request, id):
 
 def adjust_cart(request, id):
     """View that allows you to adjust the specified amount of a specified product."""
+    print(request.POST)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
