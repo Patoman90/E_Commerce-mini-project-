@@ -4,30 +4,30 @@ from django.shortcuts import render, redirect, reverse
 
 
 def view_cart(request):
-    """View that renders contents page."""
+    """A View that renders the cart contents page"""
     return render(request, "cart.html")
 
 
 def add_to_cart(request, id):
-    """View that adds a item to the cart."""
+    """Add a quantity of the specified product to the cart"""
     quantity = int(request.POST.get('quantity'))
-
     cart = request.session.get('cart', {})
     if id in cart:
         cart[id] = int(cart[id]) + quantity
     else:
         cart[id] = cart.get(id, quantity)
-
     request.session['cart'] = cart
     return redirect(reverse('index'))
 
 
 def adjust_cart(request, id):
-    """View that allows you to adjust the specified amount of a specified product."""
+    """
+    Adjust the quantity of the specified product to the specified
+    amount
+    """
     print(request.POST)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
-
     if quantity > 0:
         cart[id] = quantity
     else:
