@@ -1,4 +1,4 @@
 language : python
 python: 2.7.17
-install: "pip install requirements.txt"
+install: "pip3 install requirements.txt"
 script: SECRET_KEY="Whatever" ./manage.py test
